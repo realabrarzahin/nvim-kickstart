@@ -875,29 +875,26 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
-
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
+  {
+    -- You can easily change to a different colorscheme.
+    -- Just change the name below, and tweak the config to taste.
     --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+    -- If you want to see what colorschemes are installed: `:Telescope colorscheme`
+    'scottmckendry/cyberdream.nvim',
+    priority = 1000, -- Load before all other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields
-      require('tokyonight').setup {
-        styles = {
-          comments = { italic = false }, -- Disable italics in comments
-        },
+      require('cyberdream').setup {
+        transparent = true, -- Enable transparency
+        italic_comments = false, -- Comments in italics
+        hide_fillchars = true, -- Hide ~ at end of buffer
+        borderless_telescope = true, -- Telescope with no borders
       }
 
       -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'cyberdream'
     end,
   },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -919,16 +916,16 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
-      -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
+      -- simple and easy statusline.
+      --  you could remove this setup call if you don't like it,
       --  and try some other statusline plugin
       local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
+      -- set use_icons to true if you have a nerd font
       statusline.setup { use_icons = vim.g.have_nerd_font }
 
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
+      -- you can configure sections in the statusline by overriding their
+      -- default behavior. for example, here we set the section for
+      -- cursor location to line:column
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function()
         return '%2l:%-2v'
@@ -1020,3 +1017,21 @@ vim.o.termguicolors = true
 
 vim.keymap.set('i', 'jj', '<Esc>', {})
 vim.keymap.set('i', '<C-H>', '<C-w>', { noremap = true })
+
+-- Example in Lua init.lua (for modern Neovim)
+vim.cmd [[ highlight Normal guibg=NONE ctermbg=NONE ]]
+vim.cmd [[ highlight NormalNC guibg=NONE ctermbg=NONE ]]
+vim.cmd [[ highlight EndOfBuffer guibg=NONE ctermbg=NONE ]]
+
+vim.api.nvim_set_hl(0, 'NeoTreeNormal', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'NeoTreeNormalNC', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'NeoTreeEndOfBuffer', { bg = 'NONE' })
+
+vim.opt.fillchars = { vert = '│' }
+
+-- Custom highlight for status line
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#808080', fg = '#ffffff' })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = '#404040', fg = '#ffffff' })
+
+-- 🪶 A custom statusline, hand-forged
+vim.opt.statusline = '%f %h%m%r %= %y [%{&fileformat}] %l:%c [%p%%]'

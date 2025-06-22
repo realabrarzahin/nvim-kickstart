@@ -19,6 +19,10 @@ return {
         mappings = {
           ['\\'] = 'close_window',
         },
+        width = 25,
+        -- Set your desired width here (e.g., 20, 30, 40)
+        -- You can also use a percentage of the total window width:
+        -- width = "30%",
       },
     },
   },
