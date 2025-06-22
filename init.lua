@@ -974,7 +974,7 @@ require('lazy').setup({
   require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -1030,8 +1030,11 @@ vim.api.nvim_set_hl(0, 'NeoTreeEndOfBuffer', { bg = 'NONE' })
 vim.opt.fillchars = { vert = '│' }
 
 -- Custom highlight for status line
-vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#808080', fg = '#ffffff' })
-vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = '#404040', fg = '#ffffff' })
+vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#56A0FE', bg = '#0C0F1E', blend = 30 })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#56A0FE', bg = '#1E2238', blend = 30 })
 
--- 🪶 A custom statusline, hand-forged
-vim.opt.statusline = '%f %h%m%r %= %y [%{&fileformat}] %l:%c [%p%%]'
+-- A custom statusline, hand-forged
+vim.opt.statusline = ' %f %h%m%r %= %y [%{&fileformat}] %l:%c [%p%%] '
+
+vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#56A0FE', bg = 'NONE', bold = true })
+vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#2c3e50' })
