@@ -9,20 +9,29 @@ return {
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
   },
-  lazy = false,
+  lazy = true,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<leader>n', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
     filesystem = {
       window = {
         mappings = {
-          ['\\'] = 'close_window',
+          ['<leader>n'] = 'close_window',
         },
         width = 25,
         -- Set your desired width here (e.g., 20, 30, 40)
         -- You can also use a percentage of the total window width:
-        -- width = "30%",
+        -- width = '100%',
+        show_root = false,
+      },
+    },
+    event_handlers = {
+      {
+        event = 'file_opened',
+        handler = function(file_path)
+          require('neo-tree.command').execute { action = 'close' }
+        end,
       },
     },
   },

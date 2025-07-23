@@ -890,7 +890,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -958,6 +958,11 @@ vim.api.nvim_set_hl(0, 'cursorline', { bg = '#060709', blend = 40 })
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
 -- Example: Indent with 4 spaces
-vim.opt.tabstop = 4 -- A tab character is shown as 4 spaces wide
-vim.opt.shiftwidth = 4 -- Indents use 4 spaces
+vim.opt.tabstop = 2 -- A tab character is shown as 4 spaces wide
+vim.opt.shiftwidth = 2 -- Indents use 4 spaces
 vim.opt.expandtab = true -- Pressing Tab inserts spaces instead of a tab character
+
+vim.keymap.set('n', '<leader>ct', function()
+  local template = vim.fn.expand '~/.config/nvim/templates/cp_template.cpp'
+  vim.cmd('0r ' .. template)
+end, { desc = 'Insert CP Template' })
