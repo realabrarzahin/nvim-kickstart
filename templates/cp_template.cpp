@@ -23,7 +23,7 @@ int main() {
   fastIO();
 
   int T = 1;
-  cin >> T; // Comment this line if single test case
+  cin >> T;
 
   while (T--)
     solve();
