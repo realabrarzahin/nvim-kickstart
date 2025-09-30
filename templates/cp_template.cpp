@@ -1,31 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-using ll = long long;
-using ld = long double;
-using pii = pair<int, int>;
-using pll = pair<ll, ll>;
-using vi = vector<int>;
-using vll = vector<ll>;
-using umll = unordered_map<int, int>;
+using i64 = long long;
 
-void fastIO() {
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
-}
-
-void solve() {
-  int n;
-  cin >> n;
-}
+void solve() {}
 
 int main() {
-  fastIO();
 
-  int T = 1;
-  cin >> T;
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-  while (T--)
+  int t = 1;
+  cin >> t;
+
+  while (t--)
     solve();
 
   return 0;
