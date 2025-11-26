@@ -1010,7 +1010,7 @@ vim.keymap.set('n', '<leader>tt', function()
   end
 end, { desc = 'Toggle Horizontal Terminal Split' })
 
-vim.api.nvim_set_keymap('n', '<leader>c', ':w<CR>:!g++ % && ./a.out < in | > out <CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cc', ':w<CR>:!g++ % && ./a.out < in | > out <CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>pi', function()
   local main_win = vim.api.nvim_get_current_win()
